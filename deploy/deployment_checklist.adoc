@@ -1,0 +1,76 @@
+---
+permalink: deploy/deployment_checklist.html 
+sidebar: sidebar 
+keywords:  
+summary: La lista de comprobación le ayudará a tener toda la información útil antes de iniciar la implementación. 
+---
+= Lista de comprobación de implantación
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La lista de comprobación le ayudará a tener toda la información útil antes de iniciar la implementación. Asegúrese de anotar estos valores para la configuración antes de implementar.
+
+Debe tener en cuenta los requisitos básicos de back-end de almacenamiento, los requisitos de las aplicaciones y la licencia antes de empezar a implementar las herramientas de ONTAP para VMware vSphere.
+Antes de implementar las herramientas de ONTAP para VMware vSphere, es recomendable planificar la implementación y decidir cómo se configurarán las herramientas de ONTAP en su entorno.
+
+*Primer Nodo y otros campos comunes*
+
+* Nombre de usuario del proveedor de VASA (*)
+* Nombre de usuario del administrador (*)
+* Servidores NTP (proporcionados a vCenter para la sincronización de hora)
+
+
+*Detalles del certificado*
+
+* Activar certificado de CA personalizado
+* Certificados raíz e intermedios (ignorar cuando los autofirmados están habilitados)
+* Certificado de hoja y clave privada (se ignoran cuando se activa la firma automática)
+* Nombre de dominio(*) (ignorado cuando se habilita la firma automática)
+
+
+*Detalles del equilibrador de carga y del servidor API*
+
+* IP de Equilibrador de Carga(*)
+* IP virtual para el plano de control K8s(*)
+
+
+*Detalles de ONTAP*
+
+* LIF de gestión de ONTAP(*) (IP de administración de clúster)
+* LIF de datos de ONTAP(*)
+* VM de almacenamiento (*)
+* Nombre de usuario del clúster de ONTAP (*)
+* Habilite la migración
+* Máquina virtual principal
+* Nombre de la Biblioteca de Contenido (*)
+* Nombre de plantilla OVF (*)
+* Nombre de host(*)
+* Nombre de usuario(*)
+
+
+*Detalles de la red del primer nodo*
+
+* Nombre de host(*)
+* Dirección IP(*)
+* Longitud de prefijo (solo para IPv6)
+* Máscara de red (solo para IPv4)(*)
+* Gateway(*)
+* DNS primario (*)
+* DNS secundario(*)
+* Buscar dominios(*)
+
+
+*Segundo Nodo - Detalles de la Red de Nodos*
+
+* Nombre de host(*)
+* Dirección IP(*)
+
+
+* Tercer Nodo - Detalles de la Red de Nodos*
+
+* Nombre de host(*)
+* Dirección IP(*)
+

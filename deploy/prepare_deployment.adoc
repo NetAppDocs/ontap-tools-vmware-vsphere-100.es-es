@@ -1,0 +1,69 @@
+---
+permalink: deploy/prepare_deployment.html 
+sidebar: sidebar 
+keywords:  
+summary: Debe poner en marcha herramientas de ONTAP en su entorno y especificar los parámetros necesarios para poder utilizar el dispositivo. 
+---
+= Preparar la puesta en marcha de herramientas de ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Las herramientas de ONTAP para VMware vSphere son compatibles con varias instancias de vCenter Server, que incluye el proveedor VASA.
+
+Debe tener en cuenta los requisitos básicos de back-end de almacenamiento, los requisitos de las aplicaciones y la licencia antes de empezar a implementar las herramientas de ONTAP para VMware vSphere.
+Antes de implementar las herramientas de ONTAP para VMware vSphere, es recomendable planificar la implementación y decidir cómo se configurarán las herramientas de ONTAP en su entorno.
+
+
+
+== Preparación para la implementación
+
+A continuación se muestran los requisitos de las herramientas de ONTAP antes de continuar con la implementación:
+
+* Configurar y configurar el entorno de vCenter Server.
+* Descargue el archivo _.ova_.
+* Asegúrese de que el host o el grupo de recursos donde se implementa el OVA tenga los recursos mínimos mencionados en la sección *Requisitos para implementar las herramientas de ONTAP*.
+* Elimine la caché del explorador.
+* Se necesitan dos IP virtuales para el equilibrador de carga y el servidor API de Kubernetes. Obtenga dos direcciones IP gratuitas en la VLAN, utilizadas para la implementación, que se utiliza para acceder a los servicios después de la implementación.
+* Obtenga certificados de CA (certificados raíz, hoja e intermedios) de la CA comercial.
+* En caso de implementación de varios vCenter donde los certificados de CA personalizados son obligatorios, asigne el *Nombre de dominio* en el que se emite el certificado a la *IP virtual*. Realice una comprobación de ping en el nombre de dominio para comprobar si el dominio se está resolviendo a la IP deseada.
+* Se necesita una máquina virtual de almacenamiento en ONTAP con NFS habilitado. Siga estos pasos para configurar la máquina virtual de almacenamiento:
++
+** Tenga abierta la interfaz de línea de comandos ONTAP System Manager y ONTAP.
+** Si prefiere crear una nueva máquina virtual de almacenamiento, inicie sesión en el administrador del sistema de ONTAP y cree una máquina virtual de almacenamiento con NFS habilitado.
+** Agregue un agregado con al menos 100GB.
+** Para verificar si el agregado se ha agregado correctamente:
++
+A) Inicie sesión en la CLI de ONTAP
+
++
+b) Ejecutar el comando, vserver show -fields aggr-list
+
++
+c) Si su agregado no se ha enumerado en su equipo virtual de almacenamiento predeterminado, ejecute el comando: Vserver modify <storage VM name> -aggr-list <aggregate name>
+
++
+Para buscar el nombre del agregado que se desea añadir a la máquina virtual de almacenamiento predeterminada, puede usar el siguiente comando en la CLI de ONTAP: _Aggr show_
+
++
+Este comando muestra una lista de agregados en el sistema de almacenamiento y puede encontrar el nombre del agregado que necesita usar en la columna *aggregate*.
+
+** Hay dos opciones con la configuración de puesta en marcha: Una es las credenciales del clúster y la otra es las credenciales de SVM o directamente SVM. Para la SVM directa, tiene que configurar el LIF de gestión para la SVM antes de iniciar la implementación. Omita esto para las credenciales de clúster.
+** Asegúrese de que exista la ruta de red, inicie sesión en la interfaz de línea de comandos de ONTAP y ejecute el comando network route show -vserver <storage VM name>
++
+Si no existe, inicie sesión en la CLI de ONTAP y ejecute los siguientes comandos, net route create -vserver <vserver name> -destination <destination IP> -gateway <gateway IP> -metric 20
+
+** Asegúrese de que existe una política de exportación para la máquina virtual de almacenamiento. En el Administrador del sistema de ONTAP, vaya a *Almacenamiento* > *VM de almacenamiento* > *[nombre de VM de almacenamiento]* > *Configuración* > *Políticas de exportación*. Si no hay ninguna política de exportación, siga el paso siguiente.
+** Cree una regla de política de exportación mediante los siguientes comandos de la CLI de ONTAP
++
+Vserver export-policy rule create -vserver <nombre de VM de almacenamiento> -policyname <nombre de política de exportación> -clientmatch <ESXI-IP> -rorule any -rwrule any -superusuario any
+
++
+
+NOTE: Asegúrese de que el valor _superuser_ no es _none_.
+
+
+
+

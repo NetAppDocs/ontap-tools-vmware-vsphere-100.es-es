@@ -1,0 +1,34 @@
+---
+permalink: configure/onboard_svm.html 
+sidebar: sidebar 
+keywords:  
+summary: Utilice la siguiente API para incorporar los back-ends de almacenamiento y asignar la SVM a vCenter. 
+---
+= Back-end de almacenamiento incorporado (SVM o clúster) con vCenter
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Utilice la siguiente API para incorporar los back-ends de almacenamiento y asignar la SVM a vCenter localmente.  Consulte link:../configure/task_configure_user_role_and_privileges.html["Configure los roles y privilegios de usuario"] Sección de privilegios de usuario de SVM de ONTAP.
+
+[listing]
+----
+POST /virtualization/api/v1/vcenters/<vcguid>/storage-backends
+
+{
+     "hostname_or_ip": "172.21.103.107",
+     "username": "svm11",
+     "password": "xxxxxx"
+   }
+----
+
+NOTE: El ID de la respuesta API anterior se utiliza en la detección.
+
+Debe pasar x-auth para la API. Puede generar esta x-auth desde la nueva API que se añadió en Auth en Swagger.
+
+[listing]
+----
+/virtualization/api/v1/auth/vcenter-login
+----

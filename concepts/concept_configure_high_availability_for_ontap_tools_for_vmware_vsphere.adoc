@@ -1,0 +1,33 @@
+---
+permalink: concepts/concept_configure_high_availability_for_ontap_tools_for_vmware_vsphere.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Las herramientas de ONTAP son compatibles con una configuración de alta disponibilidad \(ha\) para ayudar a proporcionar la funcionalidad ininterrumpida de las herramientas de ONTAP durante un fallo.' 
+---
+= Configurar la alta disponibilidad para las herramientas de ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Las herramientas de ONTAP son compatibles con una configuración de alta disponibilidad (ha) para ayudar a proporcionar la funcionalidad sin interrupciones de las herramientas de ONTAP durante el fallo.
+
+Las herramientas de ONTAP se basan en la función de alta disponibilidad (ha) de VMware vSphere y en la función de tolerancia a fallos (FT) de vSphere para proporcionar una alta disponibilidad. La solución de alta disponibilidad permite recuperarse rápidamente de las interrupciones provocadas por:
+
+* Error del host
++
+
+NOTE: Solo se admite el fallo de un nodo único.
+
+* Fallo de red
+* Fallo de máquina virtual (fallo de SO invitado)
+* Fallo de la aplicación (herramientas ONTAP)
+
+
+No se necesita ninguna configuración adicional para que las herramientas de ONTAP proporcionen una alta disponibilidad. Solo las instancias de vCenter Server y los hosts ESXi deben configurarse con la función de alta disponibilidad de VMware vSphere o la función vSphere FT en función de sus requisitos. Tanto la alta disponibilidad COMO FT requieren hosts en clúster junto con almacenamiento compartido. FT tiene requisitos y limitaciones adicionales.
+
+Además de la solución de alta disponibilidad de VMware vSphere y la solución VSPHERE FT, las herramientas de ONTAP también contribuyen a que los servicios de herramientas de ONTAP se ejecuten en todo momento.
+
+
+NOTE: Las herramientas de ONTAP no admiten la alta disponibilidad del vCenter.

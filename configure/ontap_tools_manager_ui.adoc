@@ -1,0 +1,33 @@
+---
+permalink: configure/ontap_tools_manager_ui.html 
+sidebar: sidebar 
+keywords: ontap tools manager, managerui 
+summary: El gestor de herramientas de ONTAP proporciona más control y potencia para el administrador de herramientas de ONTAP, lo que ayuda en la gestión general de los dispositivos, los inquilinos y los back-ends de almacenamiento. 
+---
+= Interfaz de usuario del gestor de herramientas de ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Las herramientas de ONTAP para VMware vSphere 10,0 son un sistema multi-tenant que gestiona varios vCenter. Un administrador necesita un mayor control sobre los vCenter que se gestionan y los back-ends de almacenamiento que se integran.
+
+El gestor de herramientas de ONTAP proporciona más control y potencia para el administrador de herramientas de ONTAP, lo que ayuda en la gestión general de los dispositivos, los inquilinos y los back-ends de almacenamiento.
+
+Las herramientas de ONTAP ofrecen el siguiente rendimiento:
+
+* Gestión de vCenter: Registre y cancele el registro de vCenter en herramientas de ONTAP
+* Gestión del back-end del almacenamiento: Registre y anule el registro de clústeres de almacenamiento de ONTAP en las herramientas de ONTAP y asígnelos a vCenter incorporados a nivel global.
++
+El back-end de almacenamiento es global cuando se añade desde el administrador de herramientas de ONTAP o las API comunes y son locales cuando se añaden desde las API de vCenter.
+Ejemplo: Para una configuración multi-tenant, puede añadir el back-end de almacenamiento (clúster) a nivel global y SVM de forma local para utilizar credenciales directas de SVM.
+
+* Descargas del paquete de registros
+
+
+Para acceder a la IU de herramientas de ONTAP, inicie `\https://loadBalanceIP:8443/virtualization/ui/` Desde el explorador e inicie sesión con las credenciales de administrador de herramientas de ONTAP que se proporcionan durante la implementación.
+
+image::../media/ontap_tools_manager.png[IU del gestor de herramientas de ONTAP]
+
+Puede seleccionar la opción *No volver a mostrar* para no ver esta ventana emergente cuando inicie sesión de nuevo desde el mismo navegador.

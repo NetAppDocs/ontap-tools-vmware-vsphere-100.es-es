@@ -1,0 +1,39 @@
+---
+indexpage:
+  title: Herramientas de ONTAP para documentación de VMware vSphere
+  summary: Las herramientas de ONTAP para VMware vSphere permiten configurar, gestionar
+    y proteger los almacenes de datos virtuales en el entorno de vCenter Server.
+  keywords: ontap, tools, vmware, vsphere, manage, configure, virtual machine, protect,
+    enable, datastore
+  lead: Las herramientas de ONTAP para VMware vSphere permiten configurar, gestionar
+    y proteger los almacenes de datos virtuales en el entorno de vCenter Server.
+  tiles:
+  - title: Manos a la obra
+    links:
+    - title: Notas de la versión
+      url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2886542
+    - title: Obtenga información sobre las herramientas de ONTAP para VMware vSphere
+      url: "/concepts/concept_ontap_tools_overview.html"
+    - title: Herramientas de ONTAP Inicio rápido
+      url: "/deploy/qsg_10.html"
+    - title: Ponga en funcionamiento las herramientas de ONTAP
+      url: "/deploy/prepare_deployment.html"
+    - title: Migrar herramientas de ONTAP
+      url: migrate/migrate_to_ng.html
+  - title: Utilice las herramientas de ONTAP
+    links:
+    - title: Configure el control de acceso basado en roles
+      url: "/concepts/concept_vcenter_server_role_based_access_control_features_in_vsc_for_vmware_vsphere.html"
+    - title: Configurar el diagnóstico remoto
+      url: "/manage/task_configure_vasa_provider_to_use_ssh_for_remote_diag_access.html"
+    - title: Configuración de la alta disponibilidad
+      url: "/concepts/concept_configure_high_availability_for_ontap_tools_for_vmware_vsphere.html"
+  - title: Más recursos
+    links:
+    - title: Documentación para versiones anteriores de herramientas de ONTAP para
+        VMware
+      url: https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=63792
+    - title: Base de conocimientos de NetApp - Herramientas de ONTAP
+      url: https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/VSC_and_VASA_Provider
+    - title: 'Comunidad de NetApp: Herramientas de ONTAP'
+      url: https://community.netapp.com/t5/VMware-Solutions-Discussions/bd-p/vmware-solutions-discussions

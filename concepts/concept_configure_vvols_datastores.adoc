@@ -1,0 +1,66 @@
+---
+permalink: concepts/concept_configure_vvols_datastores.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Puede usar VASA Provider para ONTAP para crear y gestionar VMware Virtual Volumes \(vVols\). Puede aprovisionar, editar, montar y eliminar un almacén de datos vVols. También puede añadir espacio de almacenamiento al almacén de datos vVols o quitar almacenamiento del almacén de datos vVols para proporcionar una mayor flexibilidad.' 
+---
+= Configuraciones del proveedor VASA para vVols
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Es posible usar VASA Provider para ONTAP para crear y gestionar VMware Virtual Volumes (vVols). Puede aprovisionar, editar, montar y eliminar un almacén de datos vVols. También puede añadir espacio de almacenamiento al almacén de datos vVols o quitar almacenamiento del almacén de datos vVols para proporcionar una mayor flexibilidad.
+
+Un almacén de datos vVols consta de uno o varios volúmenes FlexVol dentro de un contenedor de almacenamiento (también llamado almacenamiento de respaldo). Un equipo virtual puede propagarse por un almacén de datos vVols o varios almacenes de datos vVols.
+
+Si bien puede crear un almacén de datos vVols que tenga varios volúmenes FlexVol, todos los volúmenes de FlexVol dentro del contenedor de almacenamiento deben usar el mismo protocolo (NFS o iSCSI) y las mismas máquinas virtuales de almacenamiento (SVM).
+
+
+NOTE: Se recomienda incluir varios volúmenes FlexVol en un almacén de datos vVols para obtener rendimiento y flexibilidad. Dado que los volúmenes FlexVol tienen restricciones en el número de LUN que limitan el número de equipos virtuales, incluidos varios volúmenes FlexVol, le permiten almacenar más equipos virtuales en su almacén de datos vVols. La adición de distintos volúmenes aumenta las capacidades de los almacenes de datos, donde se puede mezclar volúmenes finos y gruesos de modo que ambos tipos de máquinas virtuales puedan crearse en el almacén de datos.
+
+VASA Provider crea diferentes tipos de vVols durante el aprovisionamiento de máquinas virtuales o la creación de VMDK.
+
+* *Config*
++
+VMware vSphere utiliza este almacén de datos vVols para almacenar información de configuración.
+
++
+En implementaciones SAN (en bloques), el almacenamiento es un LUN de 4 GB.
+VCenter 8 lleva la capacidad a 256GB LUN en Thin Provisioning.
+
++
+En una implementación de NFS, se trata de un directorio que contiene archivos de configuración de equipos virtuales, como el archivo vmx y punteros a otros almacenes de datos vVols.
+
+* *Datos*
++
+Este vVols contiene información del sistema operativo y archivos de usuario.
+
++
+En implementaciones SAN, este es un LUN que tiene el tamaño del disco virtual.
+
++
+En una implementación NFS, este es un archivo que tiene el tamaño del disco virtual.
+
+* *Swap*
++
+Este vVols se crea cuando la máquina virtual está encendida y se elimina cuando la máquina virtual está apagada.
+
++
+En implementaciones DE SAN, este es un LUN del tamaño de la memoria virtual.
+
++
+En una implementación de NFS, se trata de un archivo que tiene el tamaño de la memoria virtual.
+
+* *Memoria*
++
+Este vVols se crea si se selecciona la opción Memory snapshots (instantáneas de memoria) al crear la instantánea de VM.
+
++
+En implementaciones DE SAN, este es un LUN del tamaño de la memoria virtual.
+
++
+En una implementación de NFS, se trata de un archivo que tiene el tamaño de la memoria virtual.
+
+

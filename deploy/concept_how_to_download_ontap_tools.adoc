@@ -1,0 +1,32 @@
+---
+permalink: deploy/concept_how_to_download_ontap_tools.html 
+sidebar: sidebar 
+keywords:  
+summary: Puede descargar el archivo .ova para las herramientas de ONTAP para VMware vSphere en el sitio de soporte de NetApp. 
+---
+= Cómo descargar las herramientas de ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede descargar la `.zip` Archivo que contiene binarios (_.ova_) y certificados firmados para las herramientas de ONTAP para VMware vSphere del https://mysupport.netapp.com/site/products/all/details/otv/downloads-tab["Sitio de soporte de NetApp"^].
+
+El archivo _.ova_ incluye las herramientas de ONTAP. Una vez completada la puesta en marcha, se instalan las herramientas de ONTAP y los productos VASA en el entorno. De forma predeterminada, las herramientas de ONTAP empezarán a funcionar tan pronto como decida el modelo de implementación posterior y decida si habilitar el proveedor VASA en función de sus requisitos.
+
+
+
+== Biblioteca de contenidos
+
+La biblioteca de contenido de VMware es un objeto contenedor que almacena plantillas de máquinas virtuales, plantillas de vApp y otros tipos de archivos. La implementación con biblioteca de contenido le proporciona una experiencia perfecta, ya que no depende de la conectividad de red.
+Debe crear una biblioteca de contenido para almacenar el OVA antes de implementarlos en la configuración de alta disponibilidad. No seleccione ninguna política de seguridad ni defina ninguna contraseña para la biblioteca de contenido.
+Cree la biblioteca de contenido mediante los siguientes pasos:
+
+* Pasos*
+
+. Inicie sesión en el cliente vSphere.
+. Seleccione los puntos suspensivos horizontales junto al cliente vSphere y seleccione *Content library*.
+. Seleccione el botón *Crear* en el lado derecho de la página.
+. Proporcione un nombre para la biblioteca y cree la biblioteca de contenido.
+

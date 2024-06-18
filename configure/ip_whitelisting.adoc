@@ -1,0 +1,37 @@
+---
+permalink: configure/ip_whitelisting.html 
+sidebar: sidebar 
+keywords:  
+summary: Esta función permite especificar una dirección de host ESXi específica para la operación de montaje de almacén de datos. 
+---
+= Gestione el acceso a la red
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Esta función permite especificar una dirección de host ESXi específica para la operación de montaje de almacén de datos.
+
+Cuando existen varias direcciones IP para los hosts ESXi, todas las direcciones IP detectadas del host se añaden a una política de exportación. Si no desea añadir todas las direcciones IP a la política de exportación, proporcione una configuración para las direcciones IP en lista blanca en una lista, rango o CIDR separados por coma, o una combinación de los tres para cada vCenter.
+
+Si no se proporciona la configuración, la política de exportación agrega todas las direcciones IP detectadas en el paso previo al montaje. Si se proporciona la configuración, las herramientas de ONTAP solo agregan las que se encuentran dentro del rango o IP de la lista blanca. Si ninguna de las IP de un host pertenece a las IP de la lista blanca, el montaje en ese host falla.
+
+De forma predeterminada, todas las IP del host se agregan a la política de exportación.
+
+Utilice la siguiente API para agregar direcciones IP para la lista blanca:
+
+[listing]
+----
+patch /api/v1/vcenters/{vcguid}/settings/ip-whitelist
+
+{
+    value: string
+}
+
+GET /api/v1/vcenters/{vcguid}/settings/ip-whitelist
+
+{
+    value: string
+}
+----

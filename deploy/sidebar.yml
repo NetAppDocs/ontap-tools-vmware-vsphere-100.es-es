@@ -1,0 +1,18 @@
+---
+section: deploy
+title: Ponga en funcionamiento las herramientas de ONTAP
+entries:
+- title: Herramientas de ONTAP Inicio rápido
+  url: "/deploy/qsg_10.html"
+- title: Requisitos para poner en marcha las herramientas de ONTAP
+  url: "/deploy/concept_space_and_sizing_requirements_for_ontap_tools_for_vmware_vsphere.html"
+- title: Cómo descargar las herramientas de ONTAP
+  url: "/deploy/concept_how_to_download_ontap_tools.html"
+- title: Lista de comprobación de puesta en funcionamiento
+  url: "/deploy/deployment_checklist.html"
+- title: Preparar la puesta en marcha de herramientas de ONTAP
+  url: "/deploy/prepare_deployment.html"
+- title: Cómo implementar una configuración de nodo único que no sea de alta disponibilidad
+  url: "/deploy/nonha_deployment.html"
+- title: Cómo poner en marcha una configuración de tres nodos de alta disponibilidad
+  url: "/deploy/ha_three_node.html"

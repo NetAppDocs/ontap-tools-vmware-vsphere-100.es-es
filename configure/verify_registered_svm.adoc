@@ -1,0 +1,23 @@
+---
+permalink: configure/verify_registered_svm.html 
+sidebar: sidebar 
+keywords:  
+summary: Compruebe que la SVM incorporada se muestre en VASA Provider en la interfaz de usuario de vCenter. 
+---
+= Verifique la SVM registrada
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Compruebe que la SVM incorporada se muestre en VASA Provider en la interfaz de usuario de vCenter.
+
+* Pasos*
+
+. Desplácese hasta vCenter Server.
+. Inicie sesión con las credenciales de administrador.
+. Seleccione *Proveedores de almacenamiento*.
+. Seleccione *Configurar*.
+. En el proveedor de almacenamiento/back-ends de almacenamiento, compruebe que la SVM incorporada esté correctamente en la lista.
+

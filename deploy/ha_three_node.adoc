@@ -1,0 +1,135 @@
+---
+permalink: deploy/ha_three_node.html 
+sidebar: sidebar 
+keywords:  
+summary: Puede configurar tres nodos de alta disponibilidad en configuraciones pequeñas, medianas o grandes. 
+---
+= Cómo poner en marcha una configuración de tres nodos de alta disponibilidad
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede configurar tres nodos de alta disponibilidad en configuraciones pequeñas, medianas o grandes.
+
+* Tres nodos pequeños de alta disponibilidad contienen 8 CPU y 16 GB de RAM por nodo.
+* Tres nodos de alta disponibilidad media contienen 12 CPU y 24 GB de RAM por nodo.
+* Tres nodos de alta disponibilidad grandes contienen 16 CPU y 32 GB de RAM por nodo.
+
+
+*Acerca de esta tarea*
+
+Esta tarea le da instrucciones sobre cómo instalar tres nodos HA en configuraciones pequeñas, medianas o altas.
+
+
+NOTE: La creación de la biblioteca de contenido es un paso obligatorio para implementar la configuración de tres nodos de alta disponibilidad. Consulte link:../deploy/concept_how_to_download_ontap_tools.html["Cómo descargar las herramientas de ONTAP"] para obtener más detalles.
+
+
+NOTE: Antes de continuar con la implementación, establezca el Programador de Recursos Distribuidos (DRS) del clúster en el inventario en *Conservador* durante la instalación de las herramientas de ONTAP.
+
+* Pasos*
+
+. Inicie sesión en vSphere Server.
+. Navegue a la biblioteca de contenido y seleccione su biblioteca de contenido.
+. Seleccione *Acciones* en el lado derecho de la página y seleccione *Importar elemento* e importe el archivo OVA.
+. Desplácese hasta el pool de recursos o el host en el que desea implementar el OVA.
+. Haga clic con el botón derecho en el centro de datos requerido y seleccione *Implementar plantilla OVF...*.
+. Seleccione la biblioteca de contenido donde se guarda el archivo _.ova_ y, a continuación, seleccione *Siguiente*.
+. Seleccione un nombre y una carpeta para la máquina virtual y seleccione *Siguiente*.
+. Seleccione el host y seleccione *Siguiente*
+. Revisa el resumen de la plantilla y selecciona *Siguiente*.
+. Lea y acepte el contrato de licencia y seleccione *Siguiente*.
+. En la ventana *Configuración*, selecciona la configuración *HA Three Node(Small)*, *HA Three Node(Medium)* o *HA Three Node(Large)*, dependiendo de tus necesidades.
+. Seleccione el almacenamiento para la configuración y los archivos de disco, seleccione *Siguiente*.
+. Seleccione la red de destino para cada red de origen, seleccione *Siguiente*.
+. Selecciona *Personalizar plantilla* > *configuración del sistema* ventana. Introduzca los siguientes detalles:
++
+.. Nombre de usuario y contraseña del proveedor de VASA: Este nombre de usuario y contraseña se usan para registrar el proveedor de VASA en vCenter.
+.. La casilla de verificación *Activar ASUP* está seleccionada de forma predeterminada.
++
+El soporte ASUP solo puede habilitarse o deshabilitarse durante la implementación.
+
+.. Nombre de usuario del administrador y contraseña del administrador: Esta es la contraseña utilizada para iniciar sesión en la interfaz de usuario de *ONTAP TOOLS MANAGER*.
+.. Introduzca la información del servidor NTP en el campo *Servidores NTP*.
+.. Contraseña de usuario de mantenimiento: Se utiliza para otorgar acceso a “Opciones de consola de mantenimiento”.
+
+
+. En la ventana *Personalizar plantilla* > *Certificados de proveedor VASA*, introduzca los siguientes detalles:
++
+.. Active la casilla de verificación Activar certificado de CA personalizado. Esto es necesario para la habilitación de múltiples VC. En el caso de un entorno que no sea multi-VC, ignore la casilla de verificación. No es necesario mencionar los certificados y el nombre de dominio, solo debe proporcionar los detalles de IP virtual.
+.. Copie y pegue los certificados raíz e intermedios.
+.. Copie y pegue los certificados Leaf y la clave privada.
+.. Introduzca el nombre de dominio con el que ha generado el certificado.
+.. Introduzca los detalles de IP de equilibrio de carga.
+
+
+. En la ventana *Personalizar plantilla* > *Configuración de implementación*, introduzca los siguientes detalles:
++
+.. Introduzca una dirección IP libre en IP virtual para el plano de control K8s. Necesitas esto para K8s API Server.
+.. Seleccione la casilla de verificación en la opción *Enable SVM scoping* cuando desee usar Direct SVM. Para usar el clúster de ONTAP, no seleccione la casilla de comprobación.
++
+
+NOTE: Cuando el ámbito de SVM está habilitado, ya debe haber habilitado la compatibilidad con SVM con IP de gestión.
+
+.. Introduzca los detalles que se muestran en la siguiente imagen:
++
+image::../media/ng_deployment_configuration.png[configuración de la puesta en marcha]
+
+.. Introduzca el clúster de ONTAP o la IP de gestión de SVM en *LIF de gestión de ONTAP/SVM*.
+.. Introduzca el clúster de ONTAP o la SVM *ONTAP/SVM LIF de datos*.
+.. Para la VM de almacenamiento, puede elegir proporcionar los detalles de la VM de almacenamiento predeterminada de ONTAP, o bien crear una nueva VM de almacenamiento. No introduzca el valor en el campo *Storage VM* cuando se selecciona Activar ámbito de SVM, ya que se ignora este archivo.
+.. Introduzca el nombre de usuario de ONTAP/SVM.
+.. Introduzca la contraseña de ONTAP/SVM.
+.. La opción Activar migración está desactivada por defecto. No alteres esta opción.
+.. La VM principal está habilitada de forma predeterminada. No alteres esta opción.
+
+
+. En la ventana *Personalizar plantilla* > *Detalles de biblioteca de contenido*, introduzca el *Nombre de biblioteca de contenido* y el *Nombre de plantilla OVF*.
+. En la ventana *Customize template* > *vCenter Configuration*, proporcione los detalles del vCenter donde está alojada la biblioteca de contenido.
+. En la ventana *Customize template* > *Node Configuration*, introduzca las propiedades de red del OVA para los tres nodos.
++
+
+NOTE: La información proporcionada aquí se validará para los patrones adecuados durante el proceso de instalación. En caso de discrepancia, se mostrará un mensaje de error en la consola web y se le pedirá que corrija cualquier información incorrecta proporcionada.
+
++
+Introduzca los siguientes detalles:
+
++
+.. Nombre de host.
+.. Dirección IP asignada al nombre de host.
+.. Longitud de prefijo (solo para IPv6)
+.. Máscara de red (solo para IPv4)
+.. Puerta de enlace
+.. DNS principal
+.. DNS secundario
+.. Buscar dominios
+
+
+. En la ventana *Personalizar plantilla* > *Configuración del nodo 2* y *Configuración del nodo 3*, introduzca los siguientes detalles:
++
+.. Nombre del hostl
+.. Dirección IP
+
+
+. Revisa los detalles en la ventana *Listo para completar*, selecciona *FINALIZAR*.
++
+A medida que se crea la tarea, el progreso se muestra en la barra de tareas de vSphere.
+
+. Encienda la máquina virtual después de completar la tarea.
++
+Comienza la instalación. Puede realizar un seguimiento del progreso de la instalación en la consola web de VM.
+Como parte de la instalación, se validan las configuraciones de nodos. Las entradas proporcionadas en diferentes secciones bajo la *Personalizar plantilla* en el formulario OVF son validadas. En caso de discrepancias, un cuadro de diálogo le solicita que realice una acción correctiva.
+
+. Para realizar los cambios necesarios en el cuadro de diálogo, siga los pasos que se indican a continuación:
++
+.. Haga doble clic en la consola web para comenzar a interactuar con la consola.
+.. Utilice las teclas de flecha ARRIBA y ABAJO del teclado para navegar por los campos mostrados.
+.. Utilice las teclas de flecha DERECHA e IZQUIERDA del teclado para navegar hacia el extremo derecho o izquierdo del valor proporcionado al campo.
+.. Utilice LA PESTAÑA para navegar por el panel e ingresar sus valores, *OK* o *CANCEL*.
+.. Utilice ENTER para seleccionar *OK* o *CANCEL*.
+
+
+. Al seleccionar *OK* o *CANCEL*, los valores proporcionados se volverán a validar. Usted tiene la disposición para corregir cualquier valor por 3 veces. Si no se corrige en los 3 intentos, la instalación del producto se detiene y se recomienda que pruebe la instalación en una máquina virtual nueva.
+. Después de la instalación correcta, la consola web muestra el mensaje que indica que las herramientas de ONTAP para VMware vSphere están en buen estado.
+

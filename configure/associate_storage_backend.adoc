@@ -1,0 +1,30 @@
+---
+permalink: configure/associate_storage_backend.html 
+sidebar: sidebar 
+keywords:  
+summary: necesita información. 
+---
+= Asocie el back-end de almacenamiento con vCenter
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La página enumerada de vCenter muestra el número de back-ends de almacenamiento asociados. Cada instancia de vCenter tiene la opción de asociar un back-end de almacenamiento
+
+*Acerca de esta tarea*
+
+Esta tarea le ayuda a crear un mapeo entre el back-end de almacenamiento y la vCenter incorporada a nivel global.
+
+* Pasos*
+
+. Iniciar `\https://loadBalanceIP:8443/virtualization/ui/` Desde el explorador con las credenciales de administrador de las herramientas de ONTAP proporcionadas durante la implementación.
+. Seleccione vCenters en la barra lateral.
+. Haga clic en los tres puntos verticales en la instancia de vCenter que desea asociar con back-ends de almacenamiento.
+. En el menú desplegable, seleccione el back-end de almacenamiento.
+. Seleccione la opción *Associate Storage Backend* para asociar vCenter con el backend de almacenamiento requerido.
++
+Consulte link:../configure/task_configure_user_role_and_privileges.html["Lista de privilegios mínimos necesarios para el usuario de cluster de ámbito global no administrativo"].
+
+

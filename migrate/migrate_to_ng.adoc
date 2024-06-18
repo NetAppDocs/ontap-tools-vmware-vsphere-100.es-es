@@ -1,0 +1,101 @@
+---
+permalink: migrate/migrate_to_ng.html 
+sidebar: sidebar 
+keywords: migrate 
+summary: Cuando se migran datos de almacenamiento, los back-ends de almacenamiento se incorporan manualmente mediante las API DE REST. Al migrar datos del proveedor VASA, los datos se exportan desde la base de datos de Derby existente e se importan a la base de datos MongoDB. 
+---
+= Migrar a la última versión de herramientas de ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cuando se migran datos de almacenamiento, los back-ends de almacenamiento se incorporan manualmente mediante las API DE REST. Al migrar datos del proveedor VASA, los datos se exportan desde la base de datos de Derby existente e se importan a la base de datos MongoDB.
+
+
+NOTE: Se recomienda migrar la configuración clásica solo si la configuración presta servicio solamente a la función del proveedor de VASA. Si tiene funciones como los almacenes de datos tradicionales/NVMe, la replicación de VVol y si el SRA está habilitado en el clásico, no se recomienda migrar la configuración a las herramientas ONTAP para VMware vSphere 10,0.
+
+*Acerca de esta tarea*
+
+La migración es compatible con las herramientas de ONTAP para las versiones 9.10D2 y 9.11D4 de VMware vSphere a la versión 10,0. Para migrar desde:
+* Herramientas de ONTAP para la versión VMware vSphere 9,10, primera actualización a la versión 9.10D2 y luego migrar a la versión 10,0.
+* Herramientas de ONTAP para la versión VMware vSphere 9,11, primera actualización a la versión 9.11D4 y luego migrar a la versión 10,0.
+
+
+NOTE: Como usuario existente, debe realizar la copia de seguridad OVA de 9,10/9,11 antes de actualizar a 9,10D parche o 9,11D parche
+
+* Pasos*
+
+. Habilite EL PUERTO 1527 de Derby en las herramientas de ONTAP existentes para VMware vSphere 9.10D2 y 9.11D4. Para habilitar el puerto, inicie sesión en la CLI con el usuario root y ejecute el siguiente comando:
++
+[listing]
+----
+iptables -I INPUT 1 -p tcp --dport 1527 -j ACCEPT
+----
+. Implemente OVA para herramientas de ONTAP para la versión VMware vSphere 10,0. Consulte link:../deploy/qsg_10.html["Herramientas de ONTAP Inicio rápido"]
+. Añada el vCenter que desea migrar a las herramientas de ONTAP para la versión VMware vSphere 10,0. Consulte link:../configure/add_vcenter.html["Añada vCenter"].
+. El back-end de almacenamiento incorporado localmente desde las API de vCenter de complementos remotos. Consulte link:../configure/onboard_svm.html["Back-end de almacenamiento incorporado"]. Agregue almacenamiento como ámbito local para la migración.
+. Usa la siguiente API para migrar:
++
+[listing]
+----
+/api/v1/vcenters/{vcguid}/migration-jobs
+
+{
+  "otv_ip": "10.10.10.10",
+  "vasa_provider_credentials": {
+    "username": "Administrator",
+    "password": "password"
+  }
+}
+----
++
+La llamada API anterior proporciona el jobid, que se puede utilizar para la comprobación de estado.
+
+. Utilice el siguiente URI para comprobar el estado:
++
+[listing]
+----
+https://xx.xx.xx.xxx:8443/virtualization/api/jobmanager/v2/jobs/<JobID>?includeSubJobsAndTasks=true
+----
+. Una vez completado el trabajo, valide el informe de migración. Puede ver el informe de la respuesta de trabajo como parte de los datos de trabajo.
+. Añada el proveedor de almacenamiento de herramientas de ONTAP 10,0 al vCenter y. link:../configure/register_vasa.html["Registre el proveedor de VASA en vCenter"].
+. Detenga el servicio de proveedor de almacenamiento de herramientas de ONTAP 9,10 /9,11 VASA Provider (DETENGA el proveedor VASA desde maint console).
++
+NetApp recomienda no eliminar el proveedor de VASA.
+
++
+Una vez que el antiguo proveedor de VASA se ha detenido, vCenter se conmuta al nodo de respaldo a las herramientas de ONTAP para VMware vSphere 10,0. Todos los almacenes de datos y máquinas virtuales se pueden acceder y se sirven desde las herramientas de ONTAP para VMware vSphere 10,0.
+
+. Realice la migración de parches mediante la siguiente API:
++
+[listing]
+----
+/virtualization/api/v1/vcenters/{vcguid}/migration-jobs/{migration_id}
+----
++
+El cuerpo de la solicitud está vacío para la operación de parche.
+
++
+
+NOTE: uuid es el uuid de migración devuelto en la respuesta de la API posterior a la migración.
+
++
+Una vez que la API de migración de parches se haya realizado correctamente, todas las máquinas virtuales cumplirán con la normativa de almacenamiento.
+
+
+
+La API de eliminación para la migración es:
+
+[listing]
+----
+Delete /virtualization/api/v1/vcenters/{vcguid}/migration-jobs/{migration_id}
+----
+Esta API elimina la migración por el ID de migración y elimina la migración en la instancia de vCenter indicada.
+
+Después de migrar correctamente y después de registrar las herramientas de ONTAP 10,0 en el para vCenter, haga lo siguiente:
+
+* Actualice el certificado en todos los hosts.
+* Espere un momento antes de realizar las operaciones de Datastore (DS) y Virtual Machine (VM). El tiempo de espera depende del número de hosts, DS y VM que estén presentes en la configuración. Cuando no espera, es posible que las operaciones fallen de forma intermitente.
+

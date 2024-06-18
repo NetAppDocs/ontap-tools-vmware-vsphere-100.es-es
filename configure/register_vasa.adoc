@@ -1,0 +1,39 @@
+---
+permalink: configure/register_vasa.html 
+sidebar: sidebar 
+keywords:  
+summary: Es posible registrar el suministro de VASA en vCenter mediante un certificado autofirmado o un certificado firmado por CA. El certificado autofirmado se genera mediante el apretón de manos de VMware CA. 
+---
+= Registre el proveedor de VASA en vCenter
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Es posible registrar el suministro de VASA en vCenter mediante un certificado autofirmado o un certificado firmado por CA. El certificado autofirmado se genera mediante el apretón de manos de VMware CA.
+
+*Acerca de esta tarea*
+
+Debe colocar el certificado firmado de CA en vCenter cuando utilice el método de certificado firmado por CA.
+
+* Pasos*
+
+. Desplácese hasta vCenter Server.
+. Selecciona *Configurar* > *Proveedores de almacenamiento*.
+. Haga clic en el icono *Add*.
+. Introduzca la información de conexión para el proveedor de almacenamiento:
++
+.. Nombre: Cualquier nombre fácil de usar como «ScaleoutVP».
+.. URL `\https://<name>/virtualization/version.xml` - El nombre en la URL corresponde a la IP virtual proporcionada durante la implementación de OVA para la implementación de vCenter única (o) Nombre de dominio para implementaciones de múltiples vCenter. Añada los certificados a la URL. Se publican los mismos certificados en vCenter.
+.. Credenciales: <nombre de usuario del proveedor VASA>/< contraseña del proveedor VASA> se proporcionan durante la implementación de OVA.
+
+
+. Una vez registrado el VASA, haga clic en *OK*.
+Compruebe que aparezca en Storage Provider y que el estado sea En línea.
++
+Si colocó un certificado firmado por CA en vCenter, el registro de VASA continúa con un certificado firmado por CA. De lo contrario, el enlace falla y el registro se establece por defecto en el certificado SSA.
+
+. Puede registrar varios vCenter en una única instancia vp de escalado horizontal.
+Repita los pasos mencionados anteriormente para registrar varios vCenter.
+

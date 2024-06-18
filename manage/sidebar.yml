@@ -1,0 +1,35 @@
+---
+section: manage
+title: Gestione las herramientas de ONTAP
+entries:
+- title: Gestionar almacenes de datos
+  entries:
+  - title: Expanda o reduzca el almacenamiento de almacén de datos de VVOL
+    url: "/manage/expand_storage_of_vvol_datastore.html"
+  - title: Elimine el almacén de datos vVols
+    url: "/manage/task_remove_storage_from_a_vvols_datastore.html"
+  - title: Montar y desmontar un almacén de datos de vVols
+    url: "/manage/task_mount_a_vvols_datastore.html"
+- title: Gestione el back-end de almacenamiento
+  url: "/manage/storage_backend.html"
+- title: Gestión de vCenter
+  url: "/manage/manage_vcenter.html"
+- title: Gestionar el ciclo de vida de VVol
+  url: "/manage/vvol_lifecycle_management.html"
+- title: Políticas de exportación y iGroup gestionadas
+  url: "/manage/igroup_management.html"
+- title: Acceda a la consola de mantenimiento de las herramientas de ONTAP
+  entries:
+  - title: Descripción general de la consola de mantenimiento de las herramientas
+      de ONTAP
+    url: "/manage/reference_maintenance_console_of_ontap_tools_for_vmware_vsphere.html"
+  - title: Configurar el acceso de diagnóstico remoto
+    url: "/manage/task_configure_vasa_provider_to_use_ssh_for_remote_diag_access.html"
+  - title: Inicie SSH en otros nodos
+    url: "/manage/start_the_ssh_on_other_nodes.html"
+  - title: Actualice las credenciales de vCenter y ONTAP
+    url: "/manage/update_vcenter_ontap_credentials.html"
+- title: Recoja los archivos de registro
+  url: "/manage/task_collect_the_log_files.html"
+- title: Detección
+  url: "/manage/discovery.html"

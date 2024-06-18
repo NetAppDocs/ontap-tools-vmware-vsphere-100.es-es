@@ -1,0 +1,53 @@
+---
+permalink: manage/storage_backend.html 
+sidebar: sidebar 
+keywords:  
+summary: Los back-ends de almacenamiento son sistemas que los hosts EXSi utilizan para el almacenamiento de datos. 
+---
+= Gestione el back-end de almacenamiento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Los back-ends de almacenamiento son sistemas que los hosts EXSi utilizan para el almacenamiento de datos.
+
+
+
+== Añadir back-end de almacenamiento
+
+Siga estos pasos para añadir back-ends de almacenamiento.
+
+* Pasos*
+
+. Iniciar `\https://loadBalanceIP:8443/virtualization/ui/` Desde el explorador con las credenciales de administrador de las herramientas de ONTAP proporcionadas durante la implementación.
+. Seleccione *Backends de almacenamiento* en la barra lateral.
+. Seleccione *Agregar*.
+
+
+
+
+== Modificar el back-end de almacenamiento
+
+Siga los pasos que se indican a continuación para modificar el back-end de almacenamiento existente.
+
+. Iniciar `\https://loadBalanceIP:8443/virtualization/ui/` Desde el explorador con las credenciales de administrador de las herramientas de ONTAP proporcionadas durante la implementación.
+. Seleccione los back-ends de almacenamiento en la barra lateral.
+. Seleccione el *Storage Backend* que desea modificar
+. Haga clic en el menú de elipsis vertical y seleccione *Modificar*.
+. Introduzca el *Nombre de usuario* y *Contraseña* para modificar el backend de almacenamiento.
+
+
+
+
+== Quite el back-end del almacenamiento
+
+Debe eliminar todos los almacenes de datos conectados al back-end de almacenamiento antes de quitar el back-end de almacenamiento.
+Siga los pasos a continuación para quitar el back-end de almacenamiento.
+
+. Iniciar `\https://loadBalanceIP:8443/virtualization/ui/` Desde el explorador con las credenciales de administrador de las herramientas de ONTAP proporcionadas durante la implementación.
+. Seleccione *Backends de almacenamiento* en la barra lateral.
+. Seleccione el back-end de almacenamiento que desea quitar
+. Haga clic en el menú de elipsis vertical y seleccione * Eliminar *.
+

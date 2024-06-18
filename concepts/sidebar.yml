@@ -1,0 +1,19 @@
+---
+section: concepts
+title: Conceptos
+entries:
+- title: Descripción general de las herramientas de ONTAP
+  url: "/concepts/concept_ontap_tools_overview.html"
+- title: Configuraciones del proveedor VASA para vVols
+  url: "/concepts/concept_configure_vvols_datastores.html"
+- title: Control de acceso basado en roles
+  entries:
+  - title: Información general del control de acceso basado en roles para herramientas
+      de ONTAP
+    url: "/concepts/concept_vcenter_server_role_based_access_control_features_in_vsc_for_vmware_vsphere.html"
+  - title: Roles de ONTAP recomendados al usar herramientas de ONTAP para VMware vSphere
+    url: "/concepts/concept_recommended_ontap_roles_when_using_vsc_for_vmware_vsphere.html"
+- title: Configurar la alta disponibilidad para las herramientas de ONTAP
+  url: "/concepts/concept_configure_high_availability_for_ontap_tools_for_vmware_vsphere.html"
+- title: AutoSupport
+  url: "/concepts/asup.html"
