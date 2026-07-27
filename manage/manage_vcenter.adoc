@@ -15,6 +15,7 @@ Las instancias de vCenter son plataformas de gestión central que le permiten co
 
 
 
+[[add-vcenter]]
 == Añada vCenter
 
 Puede añadir y gestionar varios vCenter con una instancia de herramientas de ONTAP para VMware vCenter 10,0.
@@ -31,6 +32,7 @@ Consulte link:../configure/task_configure_user_role_and_privileges.html["Lista d
 
 
 
+[[associate-or-dissociate-storage-backend-with-vcenter]]
 == Asocie o disocie el back-end del almacenamiento con vCenter
 
 La página enumerada de vCenter muestra el número de back-ends de almacenamiento asociados. Cada vCenter tiene la opción de asociar o desasociar un back-end de almacenamiento
@@ -49,6 +51,7 @@ Consulte link:../configure/task_configure_user_role_and_privileges.html["Lista d
 
 
 
+[[modify-vcenter]]
 == Modifique vCenter
 
 Siga los pasos que se indican a continuación para modificar los vCenters.
@@ -61,6 +64,7 @@ Siga los pasos que se indican a continuación para modificar los vCenters.
 
 
 
+[[remove-vcenter]]
 == Quite vCenter
 
 Debe quitar todos los back-ends de almacenamiento conectados a la instancia de vCenter antes de quitarlo.
@@ -76,6 +80,7 @@ NOTE: Una vez que se quita el vCenter, la aplicación ya no lo mantendrá.
 
 
 
+[[manage-storage-threshold]]
 == Gestionar umbral de almacenamiento
 
 Use la siguiente API de umbral de obtención para recuperar los límites de umbral de almacenamiento configurados para el volumen y el agregado.

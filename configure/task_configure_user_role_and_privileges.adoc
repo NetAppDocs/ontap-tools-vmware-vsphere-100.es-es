@@ -50,6 +50,7 @@ NOTE: La operación de desinstalación no elimina los roles de la herramienta ON
 
 
 
+[[svm-aggregate-mapping-requirements]]
 == Requisitos de asignación de agregados de SVM
 
 Si se utilizan credenciales directas de SVM para el aprovisionamiento de almacenes de datos, las herramientas de ONTAP internamente crean volúmenes en el agregado especificado en los almacenes de datos POSTERIORES A la API. ONTAP no permite la creación de volúmenes en agregados sin asignar en una SVM usando credenciales directas de SVM. Para resolver esto, debe asignar las SVM con los agregados usando la API de REST o la CLI como se describe aquí.
@@ -68,6 +69,7 @@ sti115_vsim_ucs630f_aggr1 vserver show-aggregates                               
 ----
 
 
+[[create-ontap-user-and-role-manually]]
 == Crear el usuario y el rol de ONTAP manualmente
 
 Siga las instrucciones de esta sección para crear el usuario y los roles manualmente sin utilizar el archivo JSON.
@@ -99,6 +101,7 @@ Agregue la RUTA DE la API *REST* y el acceso respectivo desde el menú desplegab
 
 
 
+[[list-of-minimum-privileges-required-for-non-admin-global-scoped-cluster-user]]
 == Lista de privilegios mínimos necesarios para el usuario de cluster de ámbito global no administrativo
 
 En esta sección se enumeran los privilegios mínimos necesarios para el usuario de cluster de ámbito global no administrativo creado sin utilizar el archivo JSON de los usuarios.

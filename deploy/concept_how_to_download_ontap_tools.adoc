@@ -17,6 +17,7 @@ El archivo _.ova_ incluye las herramientas de ONTAP. Una vez completada la puest
 
 
 
+[[content-library]]
 == Biblioteca de contenidos
 
 La biblioteca de contenido de VMware es un objeto contenedor que almacena plantillas de máquinas virtuales, plantillas de vApp y otros tipos de archivos. La implementación con biblioteca de contenido le proporciona una experiencia perfecta, ya que no depende de la conectividad de red.

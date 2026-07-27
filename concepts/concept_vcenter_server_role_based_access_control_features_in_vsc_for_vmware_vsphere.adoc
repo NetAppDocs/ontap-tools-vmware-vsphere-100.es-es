@@ -42,6 +42,7 @@ Los usuarios y los grupos obtienen acceso a un rol formando parte de un rol de v
 
 
 
+[[key-points-about-assigning-and-modifying-roles-for-vcenter-server]]
 == Puntos clave sobre la asignación y modificación de roles para vCenter Server
 
 Solo debe configurar roles de vCenter Server si desea limitar el acceso a objetos y tareas de vSphere. De lo contrario, puede iniciar sesión como administrador. Este inicio de sesión permite acceder automáticamente a todos los objetos de vSphere.
@@ -51,6 +52,7 @@ Si cambia los privilegios dentro de un rol, el usuario asociado a ese rol debe c
 
 
 
+[[standard-roles-packaged-with-ontap-tools]]
 == Funciones estándar incluidas en las herramientas de ONTAP
 
 Para simplificar el trabajo con los privilegios de vCenter Server y el control de acceso basado en roles, las herramientas de ONTAP ofrecen funciones de herramientas estándar de ONTAP que permiten realizar tareas de herramientas clave de ONTAP. También hay un rol de solo lectura que permite ver la información, pero no ejecutar tareas.
@@ -85,6 +87,7 @@ En este caso, debe clonar los roles de herramientas ONTAP necesarios y, a contin
 
 
 
+[[permissions-for-ontap-storage-backends-and-vsphere-objects]]
 == Permisos para back-ends de almacenamiento de ONTAP y objetos de vSphere
 
 Si el permiso de vCenter Server es suficiente, las herramientas de ONTAP luego comprueba los privilegios de RBAC de ONTAP (el rol de ONTAP) asociados con las credenciales de back-ends de almacenamiento (el nombre de usuario y la contraseña). para determinar si tiene suficientes privilegios para realizar las operaciones de almacenamiento que requiere la tarea de herramientas de ONTAP en ese back-end de almacenamiento. Si tiene los privilegios de ONTAP correctos, puede acceder a

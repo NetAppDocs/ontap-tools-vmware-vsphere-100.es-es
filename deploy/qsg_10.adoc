@@ -20,12 +20,14 @@ Herramientas de ONTAP para VMware vSphere es un único complemento vCenter Serve
 
 
 
+[[preparing-for-installation]]
 == Preparación de la instalación
 
 Pone en marcha el complemento como dispositivo virtual, lo que reduce el esfuerzo de instalar y registrar cada producto por separado en vCenter Server.
 
 
 
+[[deployment-requirements]]
 === Requisitos de puesta en marcha
 
 Antes de implementar las herramientas ONTAP para VMware vSphere, debe estar familiarizado con los requisitos de espacio para el paquete de puesta en marcha y algunos requisitos básicos del sistema host.
@@ -58,6 +60,7 @@ La memoria recomendada según el tamaño de la implementación y por nodo se mue
 |===
 
 
+[[minimum-storage-and-application-requirements]]
 == Requisitos mínimos de almacenamiento y aplicaciones:
 
 |===
@@ -85,6 +88,7 @@ Para obtener más información, consulte link:../deploy/concept_space_and_sizing
 
 
 
+[[ontap-tools-requirements]]
 === Requisitos de las herramientas de ONTAP
 
 * Configurar y configurar el entorno de vCenter Server.
@@ -97,6 +101,7 @@ Para obtener más información, consulte link:../deploy/concept_space_and_sizing
 
 
 
+[[deploying-ontap-tools]]
 == Implementar las herramientas de ONTAP
 
 .Pasos

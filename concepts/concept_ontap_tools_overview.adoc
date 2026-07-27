@@ -25,6 +25,7 @@ Las herramientas de ONTAP para VMware vSphere constan de:
 
 
 
+[[ontap-tools-vasa-provider]]
 == Herramientas de ONTAP Proveedor VASA
 
 Herramientas de ONTAP El proveedor VASA admite requisitos de alto escalado para Virtual Volumes (vVols). Es compatible con el protocolo NFS, el protocolo iSCSI y la puesta en marcha de OVA.

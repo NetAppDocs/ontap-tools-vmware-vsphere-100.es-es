@@ -15,6 +15,7 @@ Los back-ends de almacenamiento son sistemas que los hosts EXSi utilizan para el
 
 
 
+[[add-storage-backend]]
 == Añadir back-end de almacenamiento
 
 Siga estos pasos para añadir back-ends de almacenamiento.
@@ -28,6 +29,7 @@ Siga estos pasos para añadir back-ends de almacenamiento.
 
 
 
+[[modify-storage-backend]]
 == Modificar el back-end de almacenamiento
 
 Siga los pasos que se indican a continuación para modificar el back-end de almacenamiento existente.
@@ -41,6 +43,7 @@ Siga los pasos que se indican a continuación para modificar el back-end de alma
 
 
 
+[[remove-storage-backend]]
 == Quite el back-end del almacenamiento
 
 Debe eliminar todos los almacenes de datos conectados al back-end de almacenamiento antes de quitar el back-end de almacenamiento.

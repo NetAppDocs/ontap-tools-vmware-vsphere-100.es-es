@@ -40,6 +40,7 @@ Cuerpo de la solicitud
 ----
 
 
+[[examples]]
 == Ejemplos:
 
 * Montar en host adicional
